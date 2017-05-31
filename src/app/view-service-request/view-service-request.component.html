@@ -1,0 +1,64 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+  <app-left-nav></app-left-nav>
+  
+
+  <section class="content">
+    <div class="content-wrapper">
+      <div class=" box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{serviceRequest?.serviceRequestId}}</h3>
+        </div>
+
+        <div class="box-body">
+
+          <div class="post">
+
+            <!-- /.user-block -->
+            <div class="row margin-bottom">
+              <!-- /.col -->
+              <div class="col-sm-5">
+                <div class="box-body">
+
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+                  <p class="text-muted">{{serviceRequest?.street}}, {{serviceRequest?.city}}, {{serviceRequest?.state}}, {{serviceRequest?.zipcode}}</p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
+
+                  <p>{{serviceRequest?.description}}</p>
+
+                  <hr>
+                  <div *ngIf="!serviceRequest?.threeDModelCreated">
+               <h4 class="text-primary"> <b> 3D model under construction <i class="fa fa-cog fa-spin fa-1x fa-fw" aria-hidden="true"></i> </b> </h4> 
+              </div>
+                  <div *ngIf="serviceRequest?.threeDModelCreated">
+                  <div class="col-sm-4">
+                    <button type="button" (click)="onSelect(serviceRequest.serviceRequestId)" class="btn btn-block btn-success">View Model</button>
+                  </div>
+                   <div class="col-sm-5">
+                    <button type="button" (click)="onSelectThermal(serviceRequest.serviceRequestId)" class="btn btn-block btn-warning">Thermal Images</button>
+                  </div>
+                </div>
+                </div>
+
+              </div>
+              <div class="col-sm-4 pull-right">
+                <img class="img-responsive" src="../../assets/img/WhatsApp Image 2017-04-15 at 10.08.07 AM.jpeg" alt="Photo">
+              </div>
+              <!-- /.col -->
+
+              <!-- /.row -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+
+      </div>
+      <app-footer></app-footer>
+    </div>

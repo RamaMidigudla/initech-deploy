@@ -1,0 +1,15 @@
+.img-container{
+margin: 0 auto;
+height: 500px;
+width: auto;
+display: block;
+}
+
+.box-body {
+overflow: auto;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px;
+padding: 10px;
+}

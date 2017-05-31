@@ -1,0 +1,176 @@
+<div class="wrapper">
+
+  <app-header></app-header>
+  <app-left-nav></app-left-nav>
+
+  <section class="content">
+    <div class="content-wrapper">
+
+      <div [hidden]="submitted" class="box box-info" style=" width: 70%; margin:0 auto;">
+
+        <div class="box-header with-border">
+          <h3 class="box-title">Please enter the service request information</h3>
+        </div>
+        <div class="form-horizontal">
+
+          <div class="box-body">
+
+            <h4>Property Location</h4>
+
+            <form (ngSubmit)="onSubmit()" #serviceRequestForm="ngForm">
+              <div class="form-group">
+
+                <label for="Street" class="col-sm-2 control-label">
+                  
+                  <span class="fa fa-home form-control-feedback"></span>
+                  </label>
+                 
+
+                <div class="col-xs-5">
+                  <input class="form-control" required minlength="4" maxlength="40" [(ngModel)]="model.street" name="street" #street="ngModel"
+                    placeholder="Street (Required)" type="text" id="street"> 
+                  <div *ngIf="street.errors && (street.dirty || street.touched)" class="csr-alert csr-alert-danger">
+                    <div [hidden]="!street.errors.required">
+                      Street is required
+                    </div>
+                    <div [hidden]="!street.errors.minlength">
+                      Street must be at least 4 characters long.
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              
+
+              <div class="form-group">
+
+                <label for="city" class="col-sm-2 control-label"><span class="fa fa-home form-control-feedback"></span></label>
+
+                <div class="col-xs-3">
+                  <input class="form-control" id="city" #cityInput minlength="4" maxlength="40" type="text" required [(ngModel)]="model.city"
+                    placeholder="City (Required)" name="city" #city="ngModel">
+                  <div *ngIf="city.errors && (city.dirty || city.touched)" class="csr-alert csr-alert-danger">
+                    <div [hidden]="!city.errors.required">
+                      City is required
+                    </div>
+                    <div [hidden]="!city.errors.minlength">
+                      City must be at least 4 characters long.
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="state" class="col-sm-2 control-label"><span class="fa fa-map form-control-feedback"></span></label>
+
+                <div class="col-xs-4">
+                  <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" id="state" tabindex="-1" aria-hidden="true">
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="zipcode" class="col-sm-2 control-label"><span
+                  class="fa fa-map-pin form-control-feedback"></span></label>
+
+                <div class="col-xs-3">
+                  <input class="form-control" id="zipcode" placeholder="Zipcode" type="number" name="zipcode" required [(ngModel)]="model.zipcode"
+                    #zipcode="ngModel" #zipcodeInput>
+
+
+                </div>
+              </div>
+
+              <h4>Description</h4>
+              <div class="form-group">
+
+                <label for="notes" class="col-sm-2 control-label"><span
+                  class=" fa fa-file-text-o form-control-feedback"></span></label>
+
+                <div class="col-xs-5">
+                  <textarea class="form-control" id="notes" [(ngModel)]="model.description" maxlength="120" #description="ngModel" #descriptionInput
+                    name="notes" rows="3" placeholder="Notes"></textarea>
+                </div>
+              </div>
+
+
+              <div class="box-footer ">
+                <label class="col-md-4 control-label" for="serviceRequestButton"></label>
+                <div class="col-md-4 center-block">
+                  <div class="col-md-4 text-center center-block">
+                    <button class="btn btn-normal btn-success btn-flat center-block" id="serviceRequestButton" (click)="onSubmitPost()" [disabled]="!serviceRequestForm.form.valid">Create Service Request
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div [hidden]="!submitted" class=" box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            Service Request with ID 
+            <b class="text-success">{{responseStatus.serviceRequestId}}</b> 
+            has been Created (Please
+            enter this ID into to the device to start the scan)</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+
+        <div class="box-body">
+
+          <div class="post">
+
+            <!-- /.user-block -->
+            <div class="row margin-bottom">
+              <!-- /.col -->
+              <div class="col-sm-5">
+                <div class="box-body">
+
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+                  <p class="text-muted"> {{ model.street }}, {{ model.city }}, {{ model.state }}, {{model.zipcode}} </p>
+
+                  <hr>
+
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Description</strong>
+
+                  <p>{{model.description}} </p>
+
+
+                </div>
+              </div>
+
+              <!-- /.row -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="col-md-4 text-center">
+            <button [routerLink]="['']" class="btn btn-block btn-primary">Back to Home</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <app-footer></app-footer>
+
+    </div>

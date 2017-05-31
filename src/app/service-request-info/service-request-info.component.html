@@ -1,0 +1,54 @@
+
+<div class="wrapper">
+<app-header></app-header>
+
+<div class="content-wrapper">
+<app-left-nav></app-left-nav>
+
+<section class="content">
+
+<div class="row" style="margin: auto 0;">
+             <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Service Requests</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                
+                <div *ngIf="serviceRequests?.length <= 0">
+               <h4 class="text-danger"> <b> No service requests have been created yet </b> </h4> 
+              </div>
+                
+                <table *ngIf="serviceRequests?.length > 0" id="myTable" class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>SR ID</th>
+                    <th>Property Location</th>
+                    <th>Date created</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let serviceRequest of serviceRequests">
+                    <td><a role="button" [routerLink]="['/viewServiceRequest', serviceRequest.serviceRequestId]">{{serviceRequest.serviceRequestId}}</a></td>
+                    <td>{{serviceRequest.street}}, {{serviceRequest.city}}, {{serviceRequest.state}}, {{serviceRequest.zipcode}}</td>
+                    <td><span class="label label-success">{{serviceRequest.dateCreated}}</span></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <!-- /.box-footer -->
+          </div>
+  </div>
+
+  </section>
+</div>
+<app-footer></app-footer>
+</div>

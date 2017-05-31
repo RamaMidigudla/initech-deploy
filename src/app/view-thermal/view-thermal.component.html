@@ -1,0 +1,38 @@
+
+<div class="wrapper">
+<app-header></app-header>
+
+<div class="content-wrapper">
+<app-left-nav></app-left-nav>
+
+<section class="content">
+
+<div class="row" style="margin: auto 0;">
+<div class="box box-info">
+<div class="box-header with-border">
+<h3 class="box-title">Thermal Images</h3>
+<div class="box-tools pull-right">
+<button type="button" class="btn btn-box-tool" data-widget="collapse">
+</button>
+</div>
+</div>
+<!-- /.box-header -->
+<div class="box-body">
+<carousel [interval]="myInterval">
+<slide *ngFor="let imageUrl of imageUrls">
+<img [src]="imageUrl"  class= "img-container" alt="First slide">
+</slide>
+
+</carousel>
+</div>
+<!-- /.box-body -->
+<!-- /.box-footer -->
+</div>
+
+</div>
+
+
+</section>
+</div>
+<app-footer></app-footer>
+</div>
