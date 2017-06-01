@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import '../assets/iniTech3D.js';
-
 
 @Component({
   selector: 'app-root',

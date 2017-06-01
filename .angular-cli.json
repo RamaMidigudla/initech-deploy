@@ -8,10 +8,7 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "styles",
-        "bootstrap",
-        "favicon.ico"
+        "assets"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -26,7 +23,14 @@
        "bootstrap/css/bootstrap.min.css",
        "styles/css/AdminLTE.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "scripts/iniTech3D.js",
+        "scripts/three.js",
+        "scripts/Detector.js",
+        "scripts/OBJLoader.js",
+        "scripts/MTLLoader.js",
+        "scripts/TrackballControls.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

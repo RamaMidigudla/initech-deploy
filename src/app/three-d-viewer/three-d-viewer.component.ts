@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import '../../assets/iniTech3D.js';
+import '../../scripts/iniTech3D.js';
 import { AppConstants } from '../utils/app.constants';
 import { ActivatedRoute, Params } from '@angular/router';
 

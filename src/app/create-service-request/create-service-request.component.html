@@ -70,7 +70,8 @@
                 <label for="state" class="col-sm-2 control-label"><span class="fa fa-map form-control-feedback"></span></label>
 
                 <div class="col-xs-4">
-                  <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" id="state" tabindex="-1" aria-hidden="true">
+                    <select class="form-control select2 select2-hidden-accessible" [(ngModel)]="model.state" name="state" style="width: 100%;" id="state"
+                          tabindex="-1" aria-hidden="true">
                     <option *ngFor="let state of states" [value]="state">{{state}}</option>
                   </select>
                 </div>
@@ -83,11 +84,15 @@
                   class="fa fa-map-pin form-control-feedback"></span></label>
 
                 <div class="col-xs-3">
-                  <input class="form-control" id="zipcode" placeholder="Zipcode" type="number" name="zipcode" required [(ngModel)]="model.zipcode"
+                  <input class="form-control" id="zipcode" placeholder="Zipcode (Required)" type="number" name="zipcode" required [(ngModel)]="model.zipcode"
                     #zipcode="ngModel" #zipcodeInput>
-
-
+                        <div *ngIf="zipcode.errors && (zipcode.dirty || zipcode.touched)" class="csr-alert csr-alert-danger">
+                    <div [hidden]="!zipcode.errors.required">
+                      Zipcode is required 
+                    </div>
+                  </div>
                 </div>
+                
               </div>
 
               <h4>Description</h4>
